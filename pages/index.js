@@ -1,12 +1,34 @@
 import Head from "next/head";
-import { Fragment } from "react";
+import { Link } from "next/link";
+import { Fragment, useEffect, useState } from "react";
 import Date from "../components/home/date/Date";
 import Header from "../components/home/header/Header";
 import Navigation from "../components/home/navigation/navigation";
 import Toggle from "../components/home/Toggle";
 import Plus from "../components/ui/plus/Plus";
+import { getAppointment, getMedication } from "../lib/http";
+import Empty from "../components/home/Empty";
 
 export default function Home() {
+  const [data, setData] = useState([]);
+  const [appointmentData, setAppointmentData] = useState([]);
+  useEffect(() => {
+    async function fetchMedication() {
+      const medicData = await getMedication();
+
+      setData(medicData);
+    }
+    fetchMedication();
+  }, [data]);
+
+  useEffect(() => {
+    async function fetchMedication() {
+      const medicData = await getAppointment();
+
+      setAppointmentData(medicData);
+    }
+    fetchMedication();
+  }, [appointmentData]);
   return (
     <Fragment>
       <Head>
@@ -16,8 +38,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <Date />
-      <Toggle />
+      <Fragment>
+        {data.length > 0 || appointmentData.length > 0 ? (
+          <Fragment>
+            <Date />
+            <Toggle appointmentData={appointmentData} data={data} />
+          </Fragment>
+        ) : (
+          <Empty />
+        )}
+      </Fragment>
       <Plus />
       <Navigation />
     </Fragment>

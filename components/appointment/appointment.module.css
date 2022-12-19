@@ -32,7 +32,7 @@
 }
 .list {
   width: 30%;
-  margin: 3rem auto;
+  margin: 3rem auto 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,127 +40,45 @@
   gap: 1rem;
 }
 .list li {
-  width: 40%;
+  width: 100%;
   cursor: pointer;
   transition: 0.4s ease-in all;
   box-shadow: 0px 2px 6px -3px #333;
   padding: 1rem;
   border-radius: 0.5rem;
 }
-.image {
-  width: 100%;
-}
-.image img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
+
 .list li h1 {
   font-size: 1.3rem;
   margin: 0.6rem 0;
   text-transform: capitalize;
   width: 80%;
 }
-.list li p {
+.list li p,
+.list li time {
   font-size: 1rem;
+  font-weght: 400;
+  margin: 0.3rem 0;
 }
 .list li:hover,
 .list li:active {
   opacity: 0.75;
 }
-.detail {
-  width: 30%;
-  padding: 1rem;
-  margin: 1rem auto;
+.location {
+  margin: 0.5rem 0;
 }
-.img {
-  width: 100%;
-  margin: auto;
-}
-.img img {
-  width: 100%;
-  object-fit: cover;
-}
-.description {
-  margin: 1rem 0;
-  text-transform: capitalize;
-}
-.description h1 {
-  font-size: 1.2rem;
-  margin: 0.3rem 0;
-}
-.duration {
+.location address {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin: 1rem 0;
-}
-.time h2 {
-  display: flex;
-  align-items: center;
-  text-transform: capitalize;
   gap: 0.5rem;
-  font-size: 1rem;
-  color: #333;
-}
-.time h2 span {
   color: green;
-  display: flex;
-  align-items: center;
-}
-.time p {
-  text-align: end;
-  margin: 0.3rem 0;
-}
-.instruction,
-.note {
+  font-weight: bold;
   text-transform: capitalize;
-  margin: 1rem 0;
 }
-.instruction h1,
-.note h1 {
-  font-size: 1.1rem;
-}
-.instruction p,
-.note p {
-  font-size: 1rem;
-  color: #333;
-  margin: 0.3rem 0;
-}
-.action {
+.time {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin: 2rem 0;
-}
-.action button {
-  transition: 0.2s ease-in all;
-}
-.edit {
-  background: #fff;
-  border: 2px solid green;
-  padding: 0.6rem 1.2rem;
-  outline: none;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  color: green;
-  font-weight: bold;
-  font-size: 1rem;
-}
-.remove {
-  background: #fff;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  outline: none;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  color: red;
-  font-weight: bold;
-  font-size: 1rem;
-}
-.action button:active {
-  transform: scale(0.7);
-  opacity: 0.75;
+  gap: 1rem;
 }
 .form {
   width: 30%;
@@ -178,28 +96,19 @@
   gap: 0.5rem;
   margin: 0.5rem 0;
   width: 100%;
-  flex: 1;
 }
 .field label {
   text-transform: capitalize;
   text-align: start;
 }
 .field input,
-.field textarea,
-.field select {
+.field textarea {
   width: 100%;
   padding: 0.8rem;
   border-radius: 1rem;
   border: none;
   outline: none;
   background: #90ee90;
-  color: #000;
-  font-size: 1rem;
-}
-.fields {
-  display: flex;
-  width: 100%;
-  gap: 1rem;
 }
 .form button {
   margin: 2rem 0;
@@ -219,14 +128,7 @@
 @media (max-width: 850px) {
   .search,
   .list,
-  .detail,
   .form {
     width: 90%;
-  }
-  .list li h1 {
-    font-size: 0.8rem;
-  }
-  .list li p {
-    font-size: 0.5rem;
   }
 }

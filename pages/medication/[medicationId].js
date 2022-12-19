@@ -8,7 +8,7 @@ export default function MedicDetail() {
   const id = router.query.medicationId;
   return (
     <Fragment>
-      <MedicHeader title="Medication description" />
+      <MedicHeader path="/medication" title="Medication description" />
       <MedicationDetail id={id} />
     </Fragment>
   );

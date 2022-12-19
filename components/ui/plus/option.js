@@ -1,24 +1,25 @@
 import React from "react";
 import classes from "./plus.module.css";
 import { GrAdd } from "react-icons/gr";
+import Link from "next//link";
 
 export default function Option({ setShowModal }) {
   return (
     <section>
       <div onClick={() => setShowModal(false)} className="overlay"></div>
       <div className={classes.container}>
-        <div className={classes.content}>
+        <Link href="/medication/add-medication" className={classes.content}>
           <span>
             <GrAdd />
             medication
           </span>
-        </div>
-        <div className={classes.content}>
+        </Link>
+        <Link href="/appointment/add-appointment" className={classes.content}>
           <span>
             <GrAdd />
             appointment
           </span>
-        </div>
+        </Link>
       </div>
     </section>
   );

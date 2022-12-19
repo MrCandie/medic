@@ -1,15 +1,16 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import { getMedication } from "../../lib/http";
 import Appointment from "./appointment/Appointment";
 import Medication from "./medication/Medication";
 import classes from "./medication/medications.module.css";
 
-export default function Toggle() {
+export default function Toggle({ data, appointmentData }) {
   const [screen, setScreen] = useState("medication");
   let displayScreen;
   if (screen === "medication") {
-    displayScreen = <Medication />;
+    displayScreen = <Medication data={data} />;
   } else if (screen === "appointment") {
-    displayScreen = <Appointment />;
+    displayScreen = <Appointment data={appointmentData} />;
   }
   return (
     <Fragment>

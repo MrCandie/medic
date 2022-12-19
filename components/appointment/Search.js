@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { BsFillFilterSquareFill } from "react-icons/bs";
 import Spinner from "../ui/spinner/spinner";
-import classes from "./medication.module.css";
+import classes from "./appointment.module.css";
 
 export default function Search({ data, setData }) {
   const searchRef = useRef();
@@ -23,7 +23,7 @@ export default function Search({ data, setData }) {
         <input
           ref={searchRef}
           type="search"
-          placeholder="Search for medication name"
+          placeholder="Search for doctor's name"
         />
       </form>
       <span>

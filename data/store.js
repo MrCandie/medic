@@ -48,3 +48,38 @@ export const drugData = [
     id: "d4",
   },
 ];
+
+export const appointmentData = [
+  {
+    name: "dr mary johnson",
+    location: "st luke church lekki lagos",
+    time: "11am",
+    date: "7th nov. 2022",
+    id: "a1",
+    diagnosis: "sore throat with difficulty breathing",
+  },
+  {
+    name: "dr mary johnson",
+    location: "st luke church lekki lagos",
+    time: "11am",
+    date: "7th nov. 2022",
+    id: "a1",
+    diagnosis: "sore throat with difficulty breathing",
+  },
+  {
+    name: "dr mary johnson",
+    location: "st luke church lekki lagos",
+    time: "11am",
+    date: "7th nov. 2022",
+    id: "a1",
+    diagnosis: "sore throat with difficulty breathing",
+  },
+  {
+    name: "dr mary johnson",
+    location: "st luke church lekki lagos",
+    time: "11am",
+    date: "7th nov. 2022",
+    id: "a1",
+    diagnosis: "sore throat with difficulty breathing",
+  },
+];

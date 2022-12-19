@@ -7,7 +7,7 @@ import Plus from "../../components/ui/plus/Plus";
 export default function Index() {
   return (
     <Fragment>
-      <MedicHeader title="Medication" />
+      <MedicHeader path="/" title="Medication" />
       <Medication />
       <Navigation />
       <Plus />

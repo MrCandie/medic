@@ -1,8 +1,12 @@
 import React, { Fragment } from "react";
 import classes from "./medication.module.css";
 import { useRouter } from "next/router";
+import Spinner from "../ui/spinner/spinner";
 
 export default function MedicationList({ drug }) {
+  if (!drug) {
+    return <Spinner />;
+  }
   const router = useRouter();
   return (
     <Fragment>

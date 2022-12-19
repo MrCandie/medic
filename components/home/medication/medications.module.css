@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: column;
   width: 30%;
-  margin: 1rem auto;
+  margin: 1rem auto 4rem;
 }
 .drug {
   width: 90%;
@@ -53,6 +53,7 @@
 .content h1 {
   font-size: 1.1rem;
   margin: 1rem 0;
+  text-transform: capitalize;
 }
 .content p {
   font-size: 1rem;
@@ -77,6 +78,76 @@
 .medic h1 {
   font-size: 1.2rem;
   color: #000;
+}
+.contain {
+  width: 80%;
+  margin: 1rem auto;
+}
+.blank {
+  height: 100px;
+  background: #ccc;
+  width: 50%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.blank span {
+  font-size: 5rem;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+}
+.contents {
+  margin: 1rem;
+}
+.contents h1 {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 600;
+  text-transform: capitalize;
+  text-align: center;
+}
+.contents p {
+  font-size: 0.9rem;
+  color: #333;
+  text-transform: capitalize;
+  margin: 0.3rem 0;
+  text-align: center;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 3rem auto;
+}
+.action {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  background: green;
+  padding: 1rem;
+  opacity: 0.75;
+  cursor: pointer;
+}
+.action h1 {
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  text-align: center;
+  color: #fff;
+  font-weight: 500;
+}
+.action span {
+  color: green;
+  display: flex;
+  align-items: center;
+  background: #eee;
+  padding: 0.7rem;
+  border-radius: 50%;
 }
 
 @media (max-width: 850px) {

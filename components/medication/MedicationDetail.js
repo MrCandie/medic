@@ -1,13 +1,41 @@
+import React, { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { drugData } from "../../data/store";
 import classes from "./medication.module.css";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { GiAlarmClock } from "react-icons/gi";
+import { deleteMedication, getMedication } from "../../lib/http";
+import Spinner from "../ui/spinner/spinner";
 
 export default function MedicationDetail({ id }) {
-  const drug = drugData.find((item) => item.id === id);
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        setIsLoading(true);
+        const medications = await getMedication();
+        setData(medications);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
+  const drug = data.find((item) => item.id === id);
   if (!drug) {
-    return <p>Loading...</p>;
+    return <Spinner />;
+  }
+
+  async function deleteHandler() {
+    setIsLoading(true);
+    try {
+      await deleteMedication(id);
+      setIsLoading(false);
+    } catch (error) {}
+    setIsLoading(false);
   }
 
   return (
@@ -17,7 +45,10 @@ export default function MedicationDetail({ id }) {
       </div>
       <div className={classes.description}>
         <h1>{drug.name}</h1>
-        <p>{drug.dose}</p>
+        <p>
+          {drug.dose}
+          {drug.value}
+        </p>
       </div>
       <div className={classes.duration}>
         <div className={classes.time}>
@@ -27,7 +58,9 @@ export default function MedicationDetail({ id }) {
             </span>
             time
           </h2>
-          <p>{drug.time}</p>
+          <p>
+            {drug.startTime} - {drug.endTime}
+          </p>
         </div>
         <div className={classes.time}>
           <h2>
@@ -36,7 +69,7 @@ export default function MedicationDetail({ id }) {
             </span>
             remainder
           </h2>
-          <p>{drug.remainder}</p>
+          <p>{drug.reminder}</p>
         </div>
       </div>
       <div className={classes.duration}>
@@ -47,12 +80,14 @@ export default function MedicationDetail({ id }) {
             </span>
             duration
           </h2>
-          <p>{drug.duration}</p>
+          <p>
+            {drug.startDate} - {drug.endDate}
+          </p>
         </div>
       </div>
       <div className={classes.instruction}>
         <h1>doctor's instruction</h1>
-        <p>{drug.instruction}</p>
+        <p>{drug.doctorInstruction}</p>
       </div>
       <div className={classes.note}>
         <h1>personal note</h1>
@@ -60,8 +95,11 @@ export default function MedicationDetail({ id }) {
       </div>
       <div className={classes.action}>
         <button className={classes.edit}>Edit details</button>
-        <button className={classes.remove}>Remove</button>
+        <button onClick={deleteHandler} className={classes.remove}>
+          Remove
+        </button>
       </div>
+      {isLoading && <Spinner />}
     </section>
   );
 }
