@@ -9,7 +9,7 @@ import { getAppointment, getMedication } from "../lib/http";
 import Empty from "../components/home/Empty";
 import Spinner from "../components/ui/spinner/spinner";
 import { AuthContext } from "../lib/AuthContext";
-import Login from "./account/login";
+import Logins from "./account/login";
 import { getUserData } from "../lib/auth";
 
 export default function Home() {
@@ -71,9 +71,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header user={user} />
       {isLoggedIn ? (
         <Fragment>
+          <Header user={user} />
           {data.length > 0 || appointmentData.length > 0 ? (
             <Fragment>
               <Date />
@@ -82,12 +82,12 @@ export default function Home() {
           ) : (
             <Empty />
           )}
+          <Plus />
+          <Navigation />
         </Fragment>
       ) : (
-        <Login />
+        <Logins />
       )}
-      <Plus />
-      <Navigation />
       {isLoading && <Spinner />}
     </Fragment>
   );
