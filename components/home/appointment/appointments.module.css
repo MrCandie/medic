@@ -1,0 +1,63 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 1rem auto;
+}
+.appointment {
+  width: 90%;
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: space-between;
+  border-radius: 1rem;
+  box-shadow: 0px 2px 6px -3px #333;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.content h1 {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+.content p {
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+.content button {
+  background: #fff;
+  color: green;
+  font-weight: bold;
+  margin: 1rem 0;
+  border: none;
+  cursor: pointer;
+  text-align: start;
+  font-size: 1rem;
+}
+.input {
+  width: 10%;
+  text-align: center;
+}
+.location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: green;
+  font-weight: bold;
+}
+.container h1 {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 850px) {
+  .section {
+    width: 90%;
+  }
+}
