@@ -12,10 +12,13 @@ export default function MedicationList({ drug }) {
     <Fragment>
       <li key={drug.id} onClick={() => router.push(`/medication/${drug.id}`)}>
         <div className={classes.image}>
-          <img alt="drug" src={drug.image} />
+          <span className={classes.name}>{drug.name[0]}</span>
         </div>
         <h1>{drug.name}</h1>
-        <p>{drug.dose}</p>
+        <p>
+          {drug.dose}
+          {drug.value}
+        </p>
       </li>
     </Fragment>
   );

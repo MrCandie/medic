@@ -1,86 +1,74 @@
 .section {
   width: 30%;
-  margin: 2rem auto;
-  padding: 1rem;
+  margin: 1rem auto;
 }
-.head {
+.header {
+  margin: 3rem 0 1rem;
+}
+.header h1 {
+  text-transform: capitalize;
+  font-size: 1.4rem;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+.header p {
+  font-size: 1rem;
+  color: #333;
+  text-transform: capitalize;
+  text-align: center;
+}
+.p {
+  text-transform: uppercase;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+}
+.google {
+  padding: 1rem;
+  color: green;
+  border: 2px solid green;
+  background: #fff;
+  font-weight: bold;
+  margin: 2rem auto;
+  display: block;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-}
-.image {
-  width: 120px;
-}
-.image img {
-  width: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.head h2 {
-  font-size: 1.1rem;
-  color: #333;
-  font-weight: 500;
-  margin: 0.3rem 0;
-}
-.head p {
-  font-size: 0.9rem;
-  color: #333;
-}
-.profile {
-  margin: 2rem auto 5rem;
-  background: #fff;
-}
-.item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 1rem 0;
-}
-.items {
-  display: flex;
-  align-items: center;
   gap: 1rem;
-}
-.items h2 {
+  text-transform: capitalize;
+  width: 85%;
+  cursor: pointer;
   font-size: 1rem;
+}
+.log {
+  text-align: center;
   text-transform: capitalize;
 }
-.items p {
-  font-size: 0.8rem;
-  text-transform: capitalize;
+.log a {
+  color: green;
+  font-weight: bold;
+  cursor: pointer;
 }
-.item span {
-  font-size: 1rem;
-  color: #333;
-}
-.logout {
-  margin: 1rem 0;
-  color: red;
+.password {
   display: flex;
   align-items: center;
-  gap: 1rem;
-}
-.logout h2 {
-  font-size: 1rem;
+  justify-content: flex-end;
   text-transform: capitalize;
-}
-.logout span {
-  display: flex;
-  align-items: center;
-}
-.modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  padding: 1rem;
-  z-index: 20;
-  border-radius: 1rem;
-  width: 80%;
+  color: green;
+  font-weight: bold;
+  cursor: pointer;
 }
 
+.form {
+  /* width: 30%; */
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+
+  flex-direction: column;
+  padding: 1rem;
+}
 .field {
   display: flex;
   align-items: flex-start;
@@ -128,19 +116,9 @@
 .form button:active {
   transform: scale(0.7);
 }
-.modal h1 {
-  font-size: 1.3rem;
-  color: #333;
-  font-weight: 600;
-  margin: 1rem 0;
-}
-.modal hr {
-  border: none;
-  border-bottom: 1px solid green;
-}
-
 @media (max-width: 850px) {
-  .section {
+  .section,
+  .form {
     width: 90%;
   }
 }

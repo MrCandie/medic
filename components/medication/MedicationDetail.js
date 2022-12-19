@@ -10,6 +10,7 @@ import Spinner from "../ui/spinner/spinner";
 export default function MedicationDetail({ id }) {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     async function fetchData() {
@@ -36,12 +37,13 @@ export default function MedicationDetail({ id }) {
       setIsLoading(false);
     } catch (error) {}
     setIsLoading(false);
+    router.replace("/medication");
   }
 
   return (
     <section className={classes.detail}>
       <div className={classes.img}>
-        <img alt="medication description" src={drug.image} />
+        <span className={classes.names}>{drug.name[0]}</span>
       </div>
       <div className={classes.description}>
         <h1>{drug.name}</h1>

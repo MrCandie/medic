@@ -1,6 +1,5 @@
 import Head from "next/head";
-import { Link } from "next/link";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import Date from "../components/home/date/Date";
 import Header from "../components/home/header/Header";
 import Navigation from "../components/home/navigation/navigation";
@@ -8,27 +7,62 @@ import Toggle from "../components/home/Toggle";
 import Plus from "../components/ui/plus/Plus";
 import { getAppointment, getMedication } from "../lib/http";
 import Empty from "../components/home/Empty";
+import Spinner from "../components/ui/spinner/spinner";
+import { AuthContext } from "../lib/AuthContext";
+import Login from "./account/login";
+import { getUserData } from "../lib/auth";
 
 export default function Home() {
   const [data, setData] = useState([]);
   const [appointmentData, setAppointmentData] = useState([]);
-  useEffect(() => {
-    async function fetchMedication() {
-      const medicData = await getMedication();
+  const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState("");
 
-      setData(medicData);
-    }
-    fetchMedication();
-  }, [data]);
+  const auth = useContext(AuthContext);
+  const isLoggedIn = auth.isLoggedIn;
 
   useEffect(() => {
     async function fetchMedication() {
-      const medicData = await getAppointment();
-
-      setAppointmentData(medicData);
+      try {
+        setIsLoading(true);
+        const medicData = await getMedication();
+        setData(medicData);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+      }
     }
     fetchMedication();
-  }, [appointmentData]);
+  }, []);
+
+  useEffect(() => {
+    async function fetchMedication() {
+      try {
+        setIsLoading(true);
+        const medicData = await getAppointment();
+        setAppointmentData(medicData);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+      }
+    }
+    fetchMedication();
+  }, []);
+
+  useEffect(() => {
+    async function getUser() {
+      try {
+        setIsLoading(true);
+        const response = await getUserData(auth.token);
+        setUser(response);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+      }
+    }
+    getUser();
+  }, []);
+
   return (
     <Fragment>
       <Head>
@@ -37,19 +71,24 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
-      <Fragment>
-        {data.length > 0 || appointmentData.length > 0 ? (
-          <Fragment>
-            <Date />
-            <Toggle appointmentData={appointmentData} data={data} />
-          </Fragment>
-        ) : (
-          <Empty />
-        )}
-      </Fragment>
+      <Header user={user} />
+      {isLoggedIn ? (
+        <Fragment>
+          {data.length > 0 || appointmentData.length > 0 ? (
+            <Fragment>
+              <Date />
+              <Toggle appointmentData={appointmentData} data={data} />
+            </Fragment>
+          ) : (
+            <Empty />
+          )}
+        </Fragment>
+      ) : (
+        <Login />
+      )}
       <Plus />
       <Navigation />
+      {isLoading && <Spinner />}
     </Fragment>
   );
 }
