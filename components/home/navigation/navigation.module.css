@@ -42,10 +42,12 @@
     height: 60px;
     z-index: 10;
     width: 100%;
+    padding: 1rem;
   }
   .container a {
     color: #000;
     font-weight: 500;
+    font-size: 1rem;
   }
   .nav {
     display: flex;
