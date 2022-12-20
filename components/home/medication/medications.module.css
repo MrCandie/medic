@@ -1,5 +1,5 @@
 .container {
-  width: 30%;
+  width: 40%;
   margin: 1rem auto;
   display: flex;
   align-items: center;
@@ -34,11 +34,11 @@
 .section {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 40%;
   margin: 1rem auto 4rem;
 }
 .drug {
-  width: 90%;
+  width: 100%;
   margin: 1rem auto;
   display: flex;
   align-items: center;
@@ -216,5 +216,8 @@
   .container,
   .section {
     width: 90%;
+  }
+  .tag {
+    font-size: 0.5rem;
   }
 }

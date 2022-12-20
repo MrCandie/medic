@@ -19,7 +19,9 @@ export default function AppointmentDetail({ id }) {
       }
     }
     getData();
-  }, [data]);
+  }, []);
+
+  function deleteHandler() {}
 
   const appointmentData = data.find((item) => item.id === id);
   if (!appointmentData) {
@@ -45,6 +47,12 @@ export default function AppointmentDetail({ id }) {
           <hr />
           <p>{appointmentData.note}</p>
           <hr />
+        </div>
+        <div className={classes.action}>
+          <button className={classes.edit}>Edit details</button>
+          <button onClick={deleteHandler} className={classes.remove}>
+            Remove
+          </button>
         </div>
       </section>
       {loading && <Spinner />}

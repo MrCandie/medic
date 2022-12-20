@@ -26,13 +26,14 @@ export default function Profile({ data }) {
   }
 
   async function updateHandler(e) {
+    const token = localStorage.getItem("token");
     e.preventDefault();
     const enteredName = nameRef.current.value;
 
     const profileData = {
       displayName: enteredName,
       photoUrl: URL.createObjectURL(image),
-      idToken: auth.token,
+      idToken: token,
       returnSecureToken: false,
     };
 
@@ -53,10 +54,10 @@ export default function Profile({ data }) {
       <section className={classes.section}>
         <div className={classes.head}>
           <div className={classes.image}>
-            <img src={user ? user.photoUrl : ""} />
+            <img src={user && user.photoUrl} />
           </div>
-          <h2>{user.displayName}</h2>
-          <p>{data ? data.users[0].email : ""}</p>
+          <h2>{user && user.displayName}</h2>
+          <p>{user && user.email}</p>
         </div>
         <div className={classes.profile}>
           <hr />

@@ -1,5 +1,5 @@
 .search {
-  width: 30%;
+  width: 40%;
   margin: 1rem auto;
   display: flex;
   align-items: center;
@@ -31,7 +31,7 @@
   align-items: center;
 }
 .list {
-  width: 30%;
+  width: 40%;
   margin: 3rem auto;
   display: flex;
   align-items: center;
@@ -79,7 +79,7 @@
   opacity: 0.75;
 }
 .detail {
-  width: 30%;
+  width: 40%;
   padding: 1rem;
   margin: 1rem auto;
 }
@@ -187,7 +187,7 @@
   opacity: 0.75;
 }
 .form {
-  width: 30%;
+  width: 40%;
   margin: 1rem auto;
   display: flex;
   align-items: center;

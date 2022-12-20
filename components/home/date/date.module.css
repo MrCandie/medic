@@ -1,5 +1,5 @@
 .container {
-  width: 30%;
+  width: 40%;
   margin: 2rem auto;
   display: flex;
   align-items: center;
@@ -15,13 +15,13 @@
   padding: 0.4rem;
 }
 .date h1 {
-  font-size: 1.4rem;
-  color: #333;
+  font-size: 1.2rem;
+  color: #455845;
   font-weight: 600;
   margin: 1rem 0;
 }
 .date p {
-  color: #333;
+  color: #455845;
   font-size: 1rem;
 }
 .today {
@@ -30,18 +30,17 @@
   text-align: center;
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
-  background: green;
+  background: #c4ffc4;
   padding: 0.4rem;
-  border-radius: 1rem;
 }
 .today h1 {
   font-size: 1.2rem;
-  color: #fff;
+  color: #455845;
   font-weight: 600;
   margin: 1rem 0;
 }
 .today p {
-  color: #fff;
+  color: #455845;
   font-size: 1rem;
 }
 @media (max-width: 850px) {

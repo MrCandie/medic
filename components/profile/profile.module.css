@@ -1,5 +1,5 @@
 .section {
-  width: 30%;
+  width: 40%;
   margin: 2rem auto;
   padding: 1rem;
 }
@@ -11,17 +11,27 @@
 }
 .image {
   width: 120px;
+  margin: auto;
+  border: 1px solid green;
+  border-radius: 50%;
+  overflow: hidden;
+  height: 120px;
+  display: flex;
+  align-items: center;
 }
 .image img {
+  height: 120px;
   width: 100%;
-  border-radius: 50%;
   object-fit: cover;
+  display: flex;
+  align-items: center;
 }
 .head h2 {
   font-size: 1.1rem;
   color: #333;
   font-weight: 500;
   margin: 0.3rem 0;
+  text-transform: capitalize;
 }
 .head p {
   font-size: 0.9rem;
@@ -80,7 +90,7 @@
   padding: 1rem;
   z-index: 20;
   border-radius: 1rem;
-  width: 80%;
+  width: 30%;
 }
 
 .field {
@@ -142,7 +152,8 @@
 }
 
 @media (max-width: 850px) {
-  .section {
+  .section,
+  .modal {
     width: 90%;
   }
 }
