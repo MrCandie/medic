@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Fragment, useContext, useEffect, useState } from "react";
-import Date from "../components/home/date/Date";
+import Dates from "../components/home/date/Date";
 import Header from "../components/home/header/Header";
 import Navigation from "../components/home/navigation/navigation";
 import Toggle from "../components/home/Toggle";
@@ -36,7 +36,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    async function fetchMedication() {
+    async function fetchAppointment() {
       try {
         setIsLoading(true);
         const medicData = await getAppointment();
@@ -46,7 +46,7 @@ export default function Home() {
         setIsLoading(false);
       }
     }
-    fetchMedication();
+    fetchAppointment();
   }, []);
 
   useEffect(() => {
@@ -76,7 +76,7 @@ export default function Home() {
           <Header user={user} />
           {data.length > 0 || appointmentData.length > 0 ? (
             <Fragment>
-              <Date />
+              <Dates data={data} />
               <Toggle appointmentData={appointmentData} data={data} />
             </Fragment>
           ) : (

@@ -12,6 +12,7 @@
   text-align: center;
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
+  padding: 0.4rem;
 }
 .date h1 {
   font-size: 1.4rem;
@@ -21,6 +22,26 @@
 }
 .date p {
   color: #333;
+  font-size: 1rem;
+}
+.today {
+  width: 25%;
+  background: #fff;
+  text-align: center;
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  background: green;
+  padding: 0.4rem;
+  border-radius: 1rem;
+}
+.today h1 {
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+.today p {
+  color: #fff;
   font-size: 1rem;
 }
 @media (max-width: 850px) {

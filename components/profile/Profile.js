@@ -46,20 +46,15 @@ export default function Profile({ data }) {
     setShowModal(false);
   }
 
-  console.log(user);
-
-  if (!data) {
-    return <Spinner />;
-  }
   return (
     <Fragment>
       <section className={classes.section}>
         <div className={classes.head}>
           <div className={classes.image}>
-            <img src={user.photoUrl} />
+            <img src={user ? user.photoUrl : ""} />
           </div>
           <h2>{user.displayName}</h2>
-          <p>{data.users[0].email}</p>
+          <p>{data ? data.users[0].email : ""}</p>
         </div>
         <div className={classes.profile}>
           <hr />
