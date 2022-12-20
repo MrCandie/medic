@@ -10,7 +10,8 @@
   align-items: center;
   z-index: 30;
   cursor: pointer;
-  box-shadow: 0px 2px 6px 1px #333;
+  font-size: 1.1rem;
+  box-shadow: 0px 2px 6px 1px #ccc;
 }
 .container {
   position: absolute;
@@ -25,7 +26,7 @@
   gap: 1rem;
   z-index: 20;
   animation: slide 0.7s ease-out forwards;
-  width: 80%;
+  width: 30%;
 }
 @keyframes slide {
   from {
@@ -53,5 +54,8 @@
 @media (max-width: 850px) {
   .add {
     right: 5%;
+  }
+  .container {
+    width: 90%;
   }
 }

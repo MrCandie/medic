@@ -10,6 +10,7 @@ import Link from "next/link";
 import Spinner from "../ui/spinner/spinner";
 import { AuthContext } from "../../lib/AuthContext";
 import { postData } from "../../lib/auth";
+import Password from "../../components/ui/password/Password";
 
 export default function Profile({ data }) {
   const [showModal, setShowModal] = useState(false);
@@ -18,6 +19,7 @@ export default function Profile({ data }) {
   const [image, setImage] = useState("");
   const auth = useContext(AuthContext);
   const nameRef = useRef();
+  const [showPassword, setShowPassword] = useState(false);
 
   function imageHandler(e) {
     setImage(e.target.files[0]);
@@ -88,7 +90,7 @@ export default function Profile({ data }) {
             </span>
           </div>
           <hr />
-          <Link href="" className={classes.item}>
+          <div onClick={() => setShowPassword(true)} className={classes.item}>
             <div className={classes.items}>
               <span>
                 <RiLockPasswordLine />
@@ -101,7 +103,7 @@ export default function Profile({ data }) {
             <span>
               <FaGreaterThan />
             </span>
-          </Link>
+          </div>
           <hr />
           <Link href="" className={classes.item}>
             <div className={classes.items}>
@@ -148,6 +150,7 @@ export default function Profile({ data }) {
           </div>
         </Fragment>
       )}
+      {showPassword && <Password modal={setShowPassword} />}
       {loading && <Spinner />}
     </Fragment>
   );

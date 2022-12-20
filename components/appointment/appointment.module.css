@@ -124,11 +124,49 @@
 .form button:active {
   transform: scale(0.7);
 }
+.detail {
+  width: 30%;
+  margin: 2rem auto;
+}
+
+.detail h1 {
+  font-size: 1.4rem;
+  color: #333;
+  margin: 1rem 0;
+}
+.duration {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.duration p,
+.duration time {
+  font-size: 1rem;
+  color: #333;
+}
+.detail hr {
+  border: none;
+  border-bottom: 1px solid green;
+}
+.detail address {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: green;
+  font-weight: bold;
+}
+.reason p {
+  padding: 1rem;
+}
 
 @media (max-width: 850px) {
   .search,
   .list,
-  .form {
+  .form,
+  .detail {
     width: 90%;
   }
 }

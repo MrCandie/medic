@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { GrAdd } from "react-icons/gr";
+import { MdAdd } from "react-icons/md";
 import Option from "./option";
 import classes from "./plus.module.css";
 
@@ -11,7 +11,7 @@ export default function Plus() {
         onClick={() => setShowModal((prev) => !prev)}
         className={classes.add}
       >
-        <GrAdd />
+        <MdAdd />
       </span>
       {showModal && <Option setShowModal={setShowModal} />}
     </Fragment>
