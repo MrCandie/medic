@@ -6,17 +6,34 @@ import classes from "./medication/medications.module.css";
 
 export default function Toggle({ data, appointmentData }) {
   const [screen, setScreen] = useState("medication");
+  const [active, setActive] = useState("medication");
   let displayScreen;
   if (screen === "medication") {
-    displayScreen = <Medication data={data} />;
+    displayScreen = <Medication active={active} data={data} />;
   } else if (screen === "appointment") {
-    displayScreen = <Appointment data={appointmentData} />;
+    displayScreen = <Appointment active={active} data={appointmentData} />;
   }
   return (
     <Fragment>
       <div className={classes.container}>
-        <button onClick={() => setScreen("medication")}>Medications</button>
-        <button onClick={() => setScreen("appointment")}>Appointments</button>
+        <button
+          className={active === "medication" ? classes.active : classes.button}
+          onClick={() => {
+            setScreen("medication");
+            setActive("medication");
+          }}
+        >
+          Medications
+        </button>
+        <button
+          className={active === "appointment" ? classes.active : classes.button}
+          onClick={() => {
+            setScreen("appointment");
+            setActive("appointment");
+          }}
+        >
+          Appointments
+        </button>
       </div>
       {displayScreen}
     </Fragment>

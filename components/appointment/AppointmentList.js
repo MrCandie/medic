@@ -7,7 +7,7 @@ export default function AppointmentList({ list }) {
     return <Spinner />;
   }
   return (
-    <li>
+    <li key={list.id}>
       <h1>{list.name}</h1>
       <p>{list.diagnosis}</p>
       <div className={classes.location}>

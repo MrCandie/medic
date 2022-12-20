@@ -6,7 +6,7 @@ export default function Appointment({ data }) {
   return (
     <div className={classes.section}>
       {data.map((item) => (
-        <div className={classes.container}>
+        <div key={item.id} className={classes.container}>
           <h1>{item.time}</h1>
           <div className={classes.appointment}>
             <div className={classes.content}>

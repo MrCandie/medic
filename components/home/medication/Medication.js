@@ -6,7 +6,7 @@ export default function Medication({ data }) {
   return (
     <Fragment>
       {data.map((item) => (
-        <Fragment>
+        <Fragment key={item.id}>
           <div key={item.id} className={classes.section}>
             <div className={classes.medic}>
               <h1>8 am</h1>

@@ -7,7 +7,19 @@
   gap: 2rem;
   padding: 1rem;
 }
-.container button {
+.button {
+  flex: 1;
+  background: transparent;
+  color: #333;
+  font-size: 1rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem;
+  background: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.active {
   flex: 1;
   background: transparent;
   color: #333;
