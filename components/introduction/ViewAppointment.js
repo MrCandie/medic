@@ -1,13 +1,15 @@
 import React from "react";
+import { useRouter } from "next/router";
 import classes from "./introduction.module.css";
-import { GrAdd } from "react-icons/gr";
+import { MdOutlineHealthAndSafety } from "react-icons/md";
 
 export default function ViewAppointments({ screen }) {
+  const router = useRouter();
   return (
     <section className={classes.section}>
       <div className={classes.container}>
         <span>
-          <GrAdd />
+          <MdOutlineHealthAndSafety />
         </span>
       </div>
       <div className={classes.content}>
@@ -18,7 +20,9 @@ export default function ViewAppointments({ screen }) {
         </p>
       </div>
       <div className={classes.action}>
-        <button className={classes.skip}>skip</button>
+        <button onClick={() => router.replace("/")} className={classes.skip}>
+          skip
+        </button>
         <button onClick={() => screen(3)} className={classes.next}>
           Next
         </button>

@@ -1,0 +1,47 @@
+.section {
+  width: 30%;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+}
+.section h1 {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 1rem;
+}
+.success {
+  font-size: 1rem;
+  color: green;
+  text-align: center;
+  margin: 1rem;
+  font-weight: bold;
+}
+.error {
+  font-size: 1rem;
+  color: red;
+  text-align: center;
+  margin: 1rem;
+  font-weight: bold;
+}
+.section button {
+  padding: 1rem;
+  background: #004a00;
+  border: none;
+  color: #fff;
+  border-radius: 0.4rem;
+  margin: 2rem auto;
+  display: block;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+@media (max-width: 850px) {
+  .section {
+    width: 90%;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import MedicationList from "./MedicationList";
 import Search from "./Search";
 import classes from "./medication.module.css";
@@ -6,10 +6,12 @@ import Spinner from "../../components/ui/spinner/spinner";
 import { getMedication } from "../../lib/http";
 import Link from "next/link";
 import { IoMdAdd } from "react-icons/io";
+import { AuthContext } from "../../lib/AuthContext";
 
 export default function Medication() {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
+  const auth = useContext(AuthContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -24,12 +26,15 @@ export default function Medication() {
     }
     fetchData();
   }, []);
+
+  const userData = data.filter((item) => item.key === auth.UID);
+
   return (
     <Fragment>
       <Search data={data} setData={setData} />
-      {data.length > 0 ? (
+      {userData.length > 0 ? (
         <ul className={classes.list}>
-          {data.map((item) => (
+          {userData.map((item) => (
             <MedicationList drug={item} />
           ))}
         </ul>

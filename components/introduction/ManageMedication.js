@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./introduction.module.css";
-import { GrAdd } from "react-icons/gr";
+import { ImFilesEmpty } from "react-icons/im";
 import { useRouter } from "next/router";
 
 export default function ManageMedication() {
@@ -9,7 +9,7 @@ export default function ManageMedication() {
     <section className={classes.section}>
       <div className={classes.container}>
         <span>
-          <GrAdd />
+          <ImFilesEmpty />
         </span>
       </div>
       <div className={classes.content}>
@@ -20,7 +20,9 @@ export default function ManageMedication() {
         </p>
       </div>
       <div className={classes.action}>
-        <button className={classes.skip}>skip</button>
+        <button onClick={() => router.replace("/")} className={classes.skip}>
+          skip
+        </button>
         <button onClick={() => router.replace("/")} className={classes.next}>
           Get Started
         </button>

@@ -22,11 +22,13 @@ export default function Home() {
   const isLoggedIn = auth.isLoggedIn;
 
   useEffect(() => {
+    const uid = localStorage.getItem("uid");
     async function fetchMedication() {
       try {
         setIsLoading(true);
         const medicData = await getMedication();
-        setData(medicData);
+        const userData = medicData.filter((item) => item.key === uid);
+        setData(userData);
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
@@ -36,11 +38,13 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    const uid = localStorage.getItem("uid");
     async function fetchAppointment() {
       try {
         setIsLoading(true);
         const medicData = await getAppointment();
-        setAppointmentData(medicData);
+        const userData = medicData.filter((item) => item.key === uid);
+        setAppointmentData(userData);
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);

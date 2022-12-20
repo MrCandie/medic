@@ -1,17 +1,22 @@
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useContext, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { postMedication } from "../../lib/http";
 import Spinner from "../ui/spinner/spinner";
 import classes from "./medication.module.css";
+import Notification from "../ui/notification/Notification";
+import { AuthContext } from "../../lib/AuthContext";
 
 export default function MedicationForm() {
   const [isLoading, setIsLoading] = useState(false);
+  const [text, setText] = useState("");
+  const [title, setTitle] = useState("");
+  const [type, setType] = useState("");
+  const [showNotification, setShowNotification] = useState(false);
+  const auth = useContext(AuthContext);
   const router = useRouter();
-  const [image, setImage] = useState("");
   const nameRef = useRef();
   const doseRef = useRef();
   const valueRef = useRef();
-  const imageRef = useRef();
   const frequencyRef = useRef();
   const startDateRef = useRef();
   const endDateRef = useRef();
@@ -21,16 +26,17 @@ export default function MedicationForm() {
   const doctorRef = useRef();
   const noteRef = useRef();
 
-  function imageLoader(e) {
-    setImage(e.target.files[0]);
+  function isValid(value) {
+    return value.trim().length !== 0;
   }
 
+  let formIsValid;
   async function medicationHandler(e) {
     e.preventDefault();
+    const uid = localStorage.getItem("uid");
     const enteredName = nameRef.current.value;
     const enteredDose = doseRef.current.value;
     const enteredValue = valueRef.current.value;
-    const enteredImage = imageRef.current.value;
     const enteredFreq = frequencyRef.current.value;
     const enteredStartDate = startDateRef.current.value;
     const enteredEndDate = endDateRef.current.value;
@@ -40,11 +46,39 @@ export default function MedicationForm() {
     const enteredDoctorInstruction = doctorRef.current.value;
     const enteredNote = noteRef.current.value;
 
+    const nameIsValid = isValid(enteredName);
+    const doseIsValid = isValid(enteredDose);
+    const valueIsValid = isValid(enteredValue);
+    const freqIsValid = isValid(enteredFreq);
+    const startDateIsValid = isValid(enteredStartDate);
+    const endDateIsValid = isValid(enteredEndDate);
+    const startTimeIsValid = isValid(enteredStartTime);
+    const endTimeIsValid = isValid(enteredEndTime);
+    const reminderIsValid = isValid(enteredReminder);
+
+    formIsValid =
+      nameIsValid &&
+      doseIsValid &&
+      valueIsValid &&
+      freqIsValid &&
+      startDateIsValid &&
+      endDateIsValid &&
+      endTimeIsValid &&
+      startTimeIsValid &&
+      reminderIsValid;
+
+    if (!formIsValid) {
+      setText("Please enter a valid input");
+      setTitle("Invalid Inputs");
+      setType("error");
+      setShowNotification(true);
+      return;
+    }
+
     const data = {
       name: enteredName,
       dose: enteredDose,
       value: enteredValue,
-      image: URL.createObjectURL(image),
       frequency: enteredFreq,
       startDate: enteredStartDate,
       endDate: enteredEndDate,
@@ -53,11 +87,16 @@ export default function MedicationForm() {
       reminder: enteredReminder,
       doctorInstruction: enteredDoctorInstruction,
       note: enteredNote,
+      key: uid,
     };
-    setIsLoading(true);
     try {
+      setIsLoading(true);
       await postMedication(data);
       setIsLoading(false);
+      setText("Medication Added Successfully");
+      setTitle("Success");
+      setType("success");
+      setShowNotification(true);
       router.replace("/medication");
     } catch (error) {
       setIsLoading(false);
@@ -85,10 +124,7 @@ export default function MedicationForm() {
             </select>
           </div>
         </div>
-        <div className={classes.field}>
-          <label htmlFor="name">Add images</label>
-          <input onChange={imageLoader} ref={imageRef} type="file" />
-        </div>
+
         <div className={classes.field}>
           <label htmlFor="name">Frequency</label>
           <select ref={frequencyRef}>
@@ -146,6 +182,14 @@ export default function MedicationForm() {
         </div>
         <button>Add medication</button>
       </form>
+      {showNotification && (
+        <Notification
+          modal={setShowNotification}
+          text={text}
+          title={title}
+          type={type}
+        />
+      )}
       {isLoading && <Spinner />}
     </Fragment>
   );

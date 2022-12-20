@@ -9,7 +9,7 @@
   background: #fff;
   width: 80%;
   margin: 1rem auto;
-  height: 400px;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,6 +83,6 @@
     width: 90%;
   }
   .container {
-    height: 400px;
+    height: 300px;
   }
 }
