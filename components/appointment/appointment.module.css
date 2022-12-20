@@ -20,8 +20,8 @@
 }
 .search span {
   padding: 1rem;
-  color: green;
-  background: #90ee90;
+  color: #ddfddd;
+  background: #165b16;
   border-radius: 50%;
   font-size: 1rem;
   align-items: center;
@@ -46,6 +46,7 @@
   box-shadow: 0px 2px 6px -3px #333;
   padding: 1rem;
   border-radius: 0.5rem;
+  background: #fff;
 }
 
 .list li h1 {
@@ -108,14 +109,14 @@
   border-radius: 1rem;
   border: none;
   outline: none;
-  background: #90ee90;
+  background: #cbe7cb;
 }
 .form button {
   margin: 2rem 0;
   width: 100%;
   padding: 1rem;
   border: none;
-  background: green;
+  background: #004a00;
   color: #fff;
   font-weight: bold;
   border-radius: 0.4rem;

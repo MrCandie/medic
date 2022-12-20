@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 10%;
   right: 33%;
-  background: green;
+  background: #165b16;
   color: #fff;
   padding: 1rem;
   border-radius: 50%;
@@ -14,16 +14,26 @@
   box-shadow: 0px 2px 6px 1px #ccc;
 }
 .container {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
   background: transparent;
-  padding: 1rem;
+  /* padding: 1rem; */
   display: flex;
   justify-content: space-around;
   align-items: center;
   gap: 1rem;
+  /* z-index: 20;
+  animation: slide 0.7s ease-out forwards;
+  width: 30%; */
+}
+.containers {
+  padding: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 20;
   animation: slide 0.7s ease-out forwards;
   width: 30%;
@@ -55,7 +65,8 @@
   .add {
     right: 5%;
   }
-  .container {
+
+  .containers {
     width: 90%;
   }
 }

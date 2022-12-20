@@ -40,6 +40,7 @@
 .profile {
   margin: 2rem auto 5rem;
   background: #fff;
+  padding: ;
 }
 .item {
   display: flex;
@@ -81,16 +82,25 @@
   display: flex;
   align-items: center;
 }
+
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #fff;
+  background: transparent;
   padding: 1rem;
   z-index: 20;
   border-radius: 1rem;
   width: 30%;
+}
+.modals {
+  padding: 1rem;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  animation: slide 0.7s ease-out forwards;
+  width: 100%;
 }
 
 .field {

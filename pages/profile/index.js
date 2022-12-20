@@ -33,11 +33,11 @@ export default function Profiles() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    if (!data) {
-      setLoading(true);
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (!data) {
+  //     setLoading(true);
+  //   }
+  // }, [data]);
 
   return (
     <Fragment>
