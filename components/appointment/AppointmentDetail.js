@@ -1,12 +1,16 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { getAppointment } from "../../lib/http";
+import { useRouter } from "next/router";
+import { deleteAppointment, getAppointment } from "../../lib/http";
 import classes from "./appointment.module.css";
 import Spinner from "../ui/spinner/spinner";
 import { GoLocation } from "react-icons/go";
+import EditAppointment from "../edit/EditAppointment";
 
 export default function AppointmentDetail({ id }) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+  const [showUpdate, setShowUpdate] = useState("");
+  const router = useRouter();
   useEffect(() => {
     async function getData() {
       try {
@@ -21,7 +25,16 @@ export default function AppointmentDetail({ id }) {
     getData();
   }, []);
 
-  function deleteHandler() {}
+  async function deleteHandler() {
+    try {
+      setLoading(true);
+      await deleteAppointment(id);
+      router.replace("/appointment");
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
+  }
 
   const appointmentData = data.find((item) => item.id === id);
   if (!appointmentData) {
@@ -49,13 +62,22 @@ export default function AppointmentDetail({ id }) {
           <hr />
         </div>
         <div className={classes.action}>
-          <button className={classes.edit}>Edit details</button>
+          <button onClick={() => setShowUpdate(true)} className={classes.edit}>
+            Edit details
+          </button>
           <button onClick={deleteHandler} className={classes.remove}>
             Remove
           </button>
         </div>
       </section>
       {loading && <Spinner />}
+      {showUpdate && (
+        <EditAppointment
+          id={id}
+          data={appointmentData}
+          setShowUpdate={setShowUpdate}
+        />
+      )}
     </Fragment>
   );
 }

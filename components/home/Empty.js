@@ -4,7 +4,7 @@ import { BsFilterLeft } from "react-icons/bs";
 import { MdOutlineAdd } from "react-icons/md";
 import classes from "../home/medication/medications.module.css";
 
-export default function Empty() {
+export default function Empty({ title }) {
   const router = useRouter();
   return (
     <section className={classes.section}>
@@ -15,7 +15,7 @@ export default function Empty() {
           </span>
         </div>
         <div className={classes.contents}>
-          <h1>no medication added</h1>
+          <h1>no {title} added</h1>
           <p>
             you currently have no medication added, add your medication and
             doctor's appointment

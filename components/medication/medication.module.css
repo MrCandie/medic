@@ -81,6 +81,7 @@
 }
 .detail {
   width: 40%;
+  height: 110vh;
   padding: 1rem;
   margin: 1rem auto;
   background: #fff;
@@ -202,8 +203,8 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  gap: 0.5rem;
-  margin: 0.5rem 0;
+  gap: 0.2rem;
+  margin: 0.2rem 0;
   width: 100%;
   flex: 1;
 }
@@ -215,7 +216,7 @@
 .field textarea,
 .field select {
   width: 100%;
-  padding: 0.8rem;
+  padding: 0.7rem;
   border-radius: 1rem;
   border: none;
   outline: none;

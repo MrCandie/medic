@@ -1,24 +1,26 @@
 import React, { Fragment, useContext, useRef, useState } from "react";
 import { useRouter } from "next/router";
-import { postAppointment } from "../../lib/http";
-import classes from "./appointment.module.css";
+import { editAppointment, postAppointment } from "../../lib/http";
+import classes from "../appointment/appointment.module.css";
 import Spinner from "../ui/spinner/spinner";
 import Notification from "../ui/notification/Notification";
 import { AuthContext } from "../../lib/AuthContext";
 
-export default function AppointmentForm() {
+export default function EditAppointment({ data, setShowUpdate, id }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+
   const [showNotification, setShowNotification] = useState(false);
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [type, setType] = useState("");
-  const nameRef = useRef();
-  const reasonRef = useRef();
-  const addressRef = useRef();
-  const dateRef = useRef();
-  const timeRef = useRef();
-  const noteRef = useRef();
+
+  const [name, setName] = useState(data.name);
+  const [reason, setreason] = useState(data.reason);
+  const [address, setaddress] = useState(data.address);
+  const [date, setdate] = useState(data.date);
+  const [time, settime] = useState(data.time);
+  const [note, setnote] = useState(data.note);
 
   function isValid(value) {
     return value.trim().length !== 0;
@@ -26,22 +28,15 @@ export default function AppointmentForm() {
 
   let formIsValid;
 
-  async function appointmentHandler(e) {
-    const uid = localStorage.getItem("uid");
+  async function updateHandler(e) {
     e.preventDefault();
+    const uid = localStorage.getItem("uid");
 
-    const enteredName = nameRef.current.value;
-    const enteredReason = reasonRef.current.value;
-    const enteredAddress = addressRef.current.value;
-    const enteredDate = dateRef.current.value;
-    const enteredTime = timeRef.current.value;
-    const enteredNote = noteRef.current.value;
-
-    const nameIsValid = isValid(enteredName);
-    const reasonIsValid = isValid(enteredReason);
-    const addressIsValid = isValid(enteredAddress);
-    const dateIsValid = isValid(enteredDate);
-    const timeIsValid = isValid(enteredTime);
+    const nameIsValid = isValid(name);
+    const reasonIsValid = isValid(reason);
+    const addressIsValid = isValid(address);
+    const dateIsValid = isValid(date);
+    const timeIsValid = isValid(time);
 
     formIsValid =
       nameIsValid &&
@@ -59,40 +54,53 @@ export default function AppointmentForm() {
     }
 
     const data = {
-      name: enteredName,
-      reason: enteredReason,
-      address: enteredAddress,
-      date: enteredDate,
-      time: enteredTime,
-      note: enteredNote,
+      name,
+      reason,
+      address,
+      date,
+      time,
+      note,
       key: uid,
     };
-    setIsLoading(true);
     try {
-      await postAppointment(data);
+      setIsLoading(true);
+      await editAppointment(id, data);
       setIsLoading(false);
-      setText("Appointment Added Successfully");
+      setText("Appointment updated Successfully");
       setTitle("Success");
       setType("success");
       setShowNotification(true);
-      router.replace("/appointment");
+      router.replace(`/appointment`);
     } catch (error) {
       setIsLoading(false);
+      setText("something went wrong");
+      setTitle("Error");
+      setType("error");
+      setShowNotification(true);
     }
+    setShowUpdate(false);
   }
 
   return (
     <Fragment>
-      <section className="form">
-        <form onSubmit={appointmentHandler} className={classes.form}>
+      <div className="overlay"></div>
+      <div className="container">
+        <h1>edit appointment</h1>
+        <form onSubmit={updateHandler} className="form">
           <div className={classes.field}>
             <label htmlFor="name">doctor's name</label>
-            <input ref={nameRef} type="text" placeholder="Dr john doe" />
+            <input
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+              type="text"
+              placeholder="Dr john doe"
+            />
           </div>
           <div className={classes.field}>
             <label htmlFor="name">reason for the visit</label>
             <textarea
-              ref={reasonRef}
+              onChange={(e) => setreason(e.target.value)}
+              value={reason}
               rows="2"
               type="text"
               placeholder="sore throat and serious headache"
@@ -101,23 +109,33 @@ export default function AppointmentForm() {
           <div className={classes.field}>
             <label htmlFor="name">address (optional)</label>
             <input
-              ref={addressRef}
+              onChange={(e) => setaddress(e.target.value)}
+              value={address}
               type="text"
               placeholder="01, sull valley lekki laagos"
             />
           </div>
           <div className={classes.field}>
             <label htmlFor="name">date</label>
-            <input ref={dateRef} type="date" />
+            <input
+              onChange={(e) => setdate(e.target.value)}
+              value={date}
+              type="date"
+            />
           </div>
           <div className={classes.field}>
             <label htmlFor="name">time</label>
-            <input ref={timeRef} type="time" />
+            <input
+              onChange={(e) => settime(e.target.value)}
+              value={time}
+              type="time"
+            />
           </div>
           <div className={classes.field}>
             <label htmlFor="name">personal note (optional)</label>
             <textarea
-              ref={noteRef}
+              onChange={(e) => setnote(e.target.value)}
+              value={note}
               rows="2"
               type="text"
               placeholder="Ask about anything you are not clear about"
@@ -126,8 +144,7 @@ export default function AppointmentForm() {
           <button>Add Appointment</button>
           {isLoading && <Spinner />}
         </form>
-      </section>
-
+      </div>
       {showNotification && (
         <Notification
           modal={setShowNotification}

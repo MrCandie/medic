@@ -61,7 +61,6 @@ export default function Profile({ data }) {
           <p>{user && user.email}</p>
         </div>
         <div className={classes.profile}>
-          <hr />
           <div onClick={() => setShowModal(true)} className={classes.item}>
             <div className={classes.items}>
               <span>

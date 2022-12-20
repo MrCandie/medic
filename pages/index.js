@@ -84,7 +84,7 @@ export default function Home() {
               <Toggle appointmentData={appointmentData} data={data} />
             </Fragment>
           ) : (
-            <Empty />
+            <Empty title="medications" />
           )}
           <Plus />
           <Navigation />

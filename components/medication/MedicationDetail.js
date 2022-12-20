@@ -6,9 +6,11 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import { GiAlarmClock } from "react-icons/gi";
 import { deleteMedication, getMedication } from "../../lib/http";
 import Spinner from "../ui/spinner/spinner";
+import EditMedication from "../edit/EditMedication";
 
 export default function MedicationDetail({ id }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [showUpdate, setShowUpdate] = useState(false);
   const [data, setData] = useState([]);
   const router = useRouter();
 
@@ -41,67 +43,74 @@ export default function MedicationDetail({ id }) {
   }
 
   return (
-    <section className={classes.detail}>
-      <div className={classes.img}>
-        <span className={classes.names}>{drug.name[0]}</span>
-      </div>
-      <div className={classes.description}>
-        <h1>{drug.name}</h1>
-        <p>
-          {drug.dose}
-          {drug.value}
-        </p>
-      </div>
-      <div className={classes.duration}>
-        <div className={classes.time}>
-          <h2>
-            <span>
-              <AiOutlineClockCircle />
-            </span>
-            time
-          </h2>
+    <Fragment>
+      <section className={classes.detail}>
+        <div className={classes.img}>
+          <span className={classes.names}>{drug.name[0]}</span>
+        </div>
+        <div className={classes.description}>
+          <h1>{drug.name}</h1>
           <p>
-            {drug.startTime} - {drug.endTime}
+            {drug.dose}
+            {drug.value}
           </p>
         </div>
-        <div className={classes.time}>
-          <h2>
-            <span>
-              <GiAlarmClock />
-            </span>
-            remainder
-          </h2>
-          <p>{drug.reminder}</p>
+        <div className={classes.duration}>
+          <div className={classes.time}>
+            <h2>
+              <span>
+                <AiOutlineClockCircle />
+              </span>
+              time
+            </h2>
+            <p>
+              {drug.startTime} - {drug.endTime}
+            </p>
+          </div>
+          <div className={classes.time}>
+            <h2>
+              <span>
+                <GiAlarmClock />
+              </span>
+              remainder
+            </h2>
+            <p>{drug.reminder}</p>
+          </div>
         </div>
-      </div>
-      <div className={classes.duration}>
-        <div className={classes.time}>
-          <h2>
-            <span>
-              <AiOutlineClockCircle />
-            </span>
-            duration
-          </h2>
-          <p>
-            {drug.startDate} - {drug.endDate}
-          </p>
+        <div className={classes.duration}>
+          <div className={classes.time}>
+            <h2>
+              <span>
+                <AiOutlineClockCircle />
+              </span>
+              duration
+            </h2>
+            <p>
+              {drug.startDate} - {drug.endDate}
+            </p>
+          </div>
         </div>
-      </div>
-      <div className={classes.instruction}>
-        <h1>doctor's instruction</h1>
-        <p>{drug.doctorInstruction}</p>
-      </div>
-      <div className={classes.note}>
-        <h1>personal note</h1>
-        <p>{drug.note}</p>
-      </div>
-      <div className={classes.action}>
-        <button className={classes.edit}>Edit details</button>
-        <button onClick={deleteHandler} className={classes.remove}>
-          Remove
-        </button>
-      </div>
-      {isLoading && <Spinner />}
-    </section>
+        <div className={classes.instruction}>
+          <h1>doctor's instruction</h1>
+          <p>{drug.doctorInstruction}</p>
+        </div>
+        <div className={classes.note}>
+          <h1>personal note</h1>
+          <p>{drug.note}</p>
+        </div>
+        <div className={classes.action}>
+          <button onClick={() => setShowUpdate(true)} className={classes.edit}>
+            Edit details
+          </button>
+          <button onClick={deleteHandler} className={classes.remove}>
+            Remove
+          </button>
+        </div>
+        {isLoading && <Spinner />}
+      </section>
+      {showUpdate && (
+        <EditMedication setShowUpdate={setShowUpdate} data={drug} id={id} />
+      )}
+    </Fragment>
   );
 }

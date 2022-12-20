@@ -44,3 +44,46 @@ body {
   align-items: center;
   gap: 0.5rem;
 }
+.container {
+  margin-top: 5rem;
+  position: absolute;
+  z-index: 20;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 30%;
+  display: flex;
+  align-items: center;
+
+  flex-direction: column;
+  padding: 1rem;
+}
+.form {
+  width: 100%;
+}
+.form button {
+  margin: 1rem 0;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  background: #004a00;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 0.4rem;
+  transition: 0.2s ease-in all;
+}
+.form button:active {
+  transform: scale(0.7);
+}
+.container h1 {
+  font-size: 1.3rem;
+  text-transform: capitalize;
+  font-weight: 600;
+  color: #333;
+}
+@media (max-width: 850px) {
+  .container {
+    width: 90%;
+  }
+}

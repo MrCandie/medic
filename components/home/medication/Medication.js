@@ -1,9 +1,12 @@
+import { useRouter } from "next/router";
 import React, { Fragment, useState } from "react";
 import classes from "./medications.module.css";
+import Empty from "../Empty";
 // import Pulse from "react-reveal/Pulse";
 
 export default function Medication({ data }) {
   const [showModal, setShowModal] = useState(false);
+  const router = useRouter();
   const today = new Date();
   const recentData = data.filter((item) => {
     const itemDate = new Date(item.startDate);
@@ -12,6 +15,9 @@ export default function Medication({ data }) {
       today.getDate() - today.getMonth() - today.getFullYear()
     );
   });
+  if (data.length === 0) {
+    return <Empty title="medications" />;
+  }
   return (
     <Fragment>
       <div className={classes.section}>
@@ -26,7 +32,10 @@ export default function Medication({ data }) {
             <Fragment key={item.id}>
               <div className={classes.medic}>
                 <h1>{day && "Today"}</h1>
-                <div className={classes.drug}>
+                <div
+                  onClick={() => router.push(`/medication/${item.id}`)}
+                  className={classes.drug}
+                >
                   <div className={classes.image}>
                     <span className={classes.name}>{item.name[0]}</span>
                   </div>
@@ -44,7 +53,12 @@ export default function Medication({ data }) {
                       {item.dose}
                       {item.value}
                     </p>
-                    <button onClick={() => setShowModal(true)}>
+                    <button
+                      onClick={() => {
+                        setShowModal(true);
+                        router.push(`/medication/${item.id}`);
+                      }}
+                    >
                       View Instructions
                     </button>
                   </div>
@@ -53,28 +67,6 @@ export default function Medication({ data }) {
                   </div>
                 </div>
               </div>
-
-              {showModal && (
-                <Fragment>
-                  <div
-                    onClick={() => setShowModal(false)}
-                    className="overlay"
-                  ></div>
-                  <section className={classes.popup}>
-                    <div className={classes.instruction}>
-                      <div className={classes.contents}>
-                        <h1>doctor's instructions</h1>
-                        <p>{item.doctorInstruction}</p>
-                      </div>
-                      <div className={classes.contents}>
-                        <h1>personal note</h1>
-                        <p>{item.note}</p>
-                      </div>
-                      <button onClick={() => setShowModal(false)}>Close</button>
-                    </div>
-                  </section>
-                </Fragment>
-              )}
             </Fragment>
           );
         })}

@@ -1,10 +1,9 @@
-import React, { Fragment, useContext, useRef, useState } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { postMedication } from "../../lib/http";
 import Spinner from "../ui/spinner/spinner";
 import classes from "./medication.module.css";
 import Notification from "../ui/notification/Notification";
-import { AuthContext } from "../../lib/AuthContext";
 
 export default function MedicationForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,8 +11,9 @@ export default function MedicationForm() {
   const [title, setTitle] = useState("");
   const [type, setType] = useState("");
   const [showNotification, setShowNotification] = useState(false);
-  const auth = useContext(AuthContext);
+
   const router = useRouter();
+
   const nameRef = useRef();
   const doseRef = useRef();
   const valueRef = useRef();
