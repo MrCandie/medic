@@ -3,7 +3,7 @@ import classes from "./password.module.css";
 import { AuthContext } from "../../../lib/AuthContext";
 import { changePassword } from "../../../lib/auth";
 import Spinner from "../spinner/spinner";
-import Fade from "react-reveal/Fade";
+// import Fade from "react-reveal/Fade";
 
 export default function Password({ modal }) {
   const passwordRef = useRef();
@@ -34,17 +34,15 @@ export default function Password({ modal }) {
     <Fragment>
       <div onClick={() => modal(false)} className="overlay"></div>
       <section className={classes.section}>
-        <Fade top>
-          <div className={classes.sections}>
-            <form onSubmit={changeHandler} className={classes.form}>
-              <div className={classes.field}>
-                <label>Enter new password</label>
-                <input ref={passwordRef} type="password" />
-              </div>
-              <button>Change</button>
-            </form>
-          </div>
-        </Fade>
+        <div>
+          <form onSubmit={changeHandler} className={classes.form}>
+            <div className={classes.field}>
+              <label>Enter new password</label>
+              <input ref={passwordRef} type="password" />
+            </div>
+            <button>Change</button>
+          </form>
+        </div>
       </section>
       {loading && <Spinner />}
     </Fragment>

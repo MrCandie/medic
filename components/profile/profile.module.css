@@ -40,7 +40,7 @@
 .profile {
   margin: 2rem auto 5rem;
   background: #fff;
-  padding: ;
+  padding: 1rem;
 }
 .item {
   display: flex;
@@ -88,7 +88,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: transparent;
+  background: #fff;
   padding: 1rem;
   z-index: 20;
   border-radius: 1rem;

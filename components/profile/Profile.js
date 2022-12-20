@@ -11,7 +11,7 @@ import Spinner from "../ui/spinner/spinner";
 import { AuthContext } from "../../lib/AuthContext";
 import { postData } from "../../lib/auth";
 import Password from "../../components/ui/password/Password";
-import Fade from "react-reveal/Fade";
+// import Fade from "react-reveal/Fade";
 
 export default function Profile({ data }) {
   const [showModal, setShowModal] = useState(false);
@@ -136,23 +136,21 @@ export default function Profile({ data }) {
         <Fragment>
           <div onClick={() => setShowModal(false)} className="overlay"></div>
           <div className={classes.modal}>
-            <Fade top>
-              <div className={classes.modals}>
-                <h1>Edit Profile</h1>
-                <hr />
-                <form onSubmit={updateHandler} className={classes.form}>
-                  <div className={classes.field}>
-                    <label>Enter name</label>
-                    <input ref={nameRef} type="text" placeholder="John doe" />
-                  </div>
-                  <div className={classes.field}>
-                    <label>Upload Picture</label>
-                    <input onChange={imageHandler} type="file" />
-                  </div>
-                  <button>Update</button>
-                </form>
-              </div>
-            </Fade>
+            <div>
+              <h1>Edit Profile</h1>
+              <hr />
+              <form onSubmit={updateHandler} className={classes.form}>
+                <div className={classes.field}>
+                  <label>Enter name</label>
+                  <input ref={nameRef} type="text" placeholder="John doe" />
+                </div>
+                <div className={classes.field}>
+                  <label>Upload Picture</label>
+                  <input onChange={imageHandler} type="file" />
+                </div>
+                <button>Update</button>
+              </form>
+            </div>
           </div>
         </Fragment>
       )}

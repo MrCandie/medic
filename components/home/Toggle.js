@@ -3,7 +3,7 @@ import { getMedication } from "../../lib/http";
 import Appointment from "./appointment/Appointment";
 import Medication from "./medication/Medication";
 import classes from "./medication/medications.module.css";
-import Pulse from "react-reveal/Pulse";
+// import Pulse from "react-reveal/Pulse";
 
 export default function Toggle({ data, appointmentData }) {
   const [screen, setScreen] = useState("medication");
@@ -16,32 +16,27 @@ export default function Toggle({ data, appointmentData }) {
   }
   return (
     <Fragment>
-      <Pulse>
-        <div className={classes.container}>
-          <button
-            className={
-              active === "medication" ? classes.active : classes.button
-            }
-            onClick={() => {
-              setScreen("medication");
-              setActive("medication");
-            }}
-          >
-            Medications
-          </button>
-          <button
-            className={
-              active === "appointment" ? classes.active : classes.button
-            }
-            onClick={() => {
-              setScreen("appointment");
-              setActive("appointment");
-            }}
-          >
-            Appointments
-          </button>
-        </div>
-      </Pulse>
+      <div className={classes.container}>
+        <button
+          className={active === "medication" ? classes.active : classes.button}
+          onClick={() => {
+            setScreen("medication");
+            setActive("medication");
+          }}
+        >
+          Medications
+        </button>
+        <button
+          className={active === "appointment" ? classes.active : classes.button}
+          onClick={() => {
+            setScreen("appointment");
+            setActive("appointment");
+          }}
+        >
+          Appointments
+        </button>
+      </div>
+
       {displayScreen}
     </Fragment>
   );
