@@ -11,6 +11,9 @@ import Spinner from "../components/ui/spinner/spinner";
 import { AuthContext } from "../lib/AuthContext";
 import Logins from "./account/login";
 import { getUserData } from "../lib/auth";
+// import "../lib/firebase-config";
+// import { requestPermission } from "../lib/firebase-config";
+// import addNotification from "react-push-notification";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -66,6 +69,16 @@ export default function Home() {
     }
     getUser();
   }, []);
+
+  // function pushNotification() {
+  //   addNotification({
+  //     title: "It's time",
+  //     subtitle: "go and take your drugs now",
+  //     nessage: "oya go and take your drugs",
+  //     native: true,
+  //     vibrate: true,
+  //   });
+  // }
 
   return (
     <Fragment>

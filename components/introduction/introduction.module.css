@@ -6,16 +6,22 @@
   box-shadow: 0px 2px 6px 1px #333;
 }
 .container {
-  background: #fff;
+  /* background: #fff; */
   width: 80%;
   margin: 1rem auto;
   height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #333;
+  /* border: 1px solid #333; */
   border-bottom: none;
   border-radius: 1rem;
+}
+.image {
+  width: 50%;
+}
+.image img {
+  width: 100%;
 }
 .container span {
   border-radius: 50%;
@@ -76,6 +82,31 @@
 }
 .action button:active {
   transform: scale(0.7);
+}
+.progress {
+  /* margin: 1rem 0; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.outer {
+  width: 0.7rem;
+  height: 0.7rem;
+  background: #ccc;
+  border-radius: 50%;
+  position: relative;
+  border: none;
+}
+.inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: green;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
 }
 
 @media (max-width: 850px) {

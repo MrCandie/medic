@@ -141,7 +141,12 @@ export default function EditAppointment({ data, setShowUpdate, id }) {
               placeholder="Ask about anything you are not clear about"
             />
           </div>
-          <button>Add Appointment</button>
+          <div className="action">
+            <button type="button" onClick={() => setShowUpdate(false)}>
+              Cancel
+            </button>
+            <button>Update Appointment</button>
+          </div>
           {isLoading && <Spinner />}
         </form>
       </div>

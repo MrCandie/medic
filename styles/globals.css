@@ -82,6 +82,11 @@ body {
   font-weight: 600;
   color: #333;
 }
+.action {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 @media (max-width: 850px) {
   .container {
     width: 90%;

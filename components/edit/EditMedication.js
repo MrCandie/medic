@@ -207,7 +207,12 @@ export default function EditMedication({ setShowUpdate, id, data }) {
                 placeholder="Ask about anything you are not clear about"
               />
             </div>
-            <button>Update Medication</button>
+            <div className="action">
+              <button type="button" onClick={() => setShowUpdate(false)}>
+                Cancel
+              </button>
+              <button>Update Medication</button>
+            </div>
           </form>
           {showNotification && (
             <Notification
