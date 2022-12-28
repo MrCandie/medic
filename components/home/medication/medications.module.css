@@ -216,7 +216,7 @@
 @media (max-width: 850px) {
   .container,
   .section {
-    width: 90%;
+    width: 100%;
   }
   .tag {
     font-size: 0.5rem;

@@ -253,7 +253,10 @@
   .list,
   .detail,
   .form {
-    width: 90%;
+    width: 100%;
+  }
+  .list li {
+    width: 95%;
   }
   .list li h1 {
     font-size: 0.9rem;
