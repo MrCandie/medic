@@ -38,7 +38,11 @@ export default function Password({ modal }) {
           <form onSubmit={changeHandler} className={classes.form}>
             <div className={classes.field}>
               <label>Enter new password</label>
-              <input ref={passwordRef} type="password" />
+              <input
+                placeholder="Enter new password"
+                ref={passwordRef}
+                type="password"
+              />
             </div>
             <button>Change</button>
           </form>

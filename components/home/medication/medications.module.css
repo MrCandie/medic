@@ -156,6 +156,7 @@
   padding: 1rem;
   opacity: 0.75;
   cursor: pointer;
+  height: 130px;
 }
 .action h1 {
   font-size: 0.8rem;
@@ -216,7 +217,7 @@
 @media (max-width: 850px) {
   .container,
   .section {
-    width: 100%;
+    width: 95%;
   }
   .tag {
     font-size: 0.5rem;
